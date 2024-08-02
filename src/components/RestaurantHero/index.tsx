@@ -1,13 +1,20 @@
-import imgHero from '../../assets/images/image 2.png'
+
 import { Hero } from './styles'
 
-const RestaurantHero = () => (
+
+export type Props = {
+    capa: string,
+    tipo: string,
+    titulo: string
+}
+
+const RestaurantHero = ({ capa, titulo, tipo }: Props) => (
     <>
     <Hero>
-        <img src={imgHero} alt="" />
+        <img src={capa} alt="Capa Restaurante" />
         <div className="heroText">
-            <h3>Italiana</h3>
-            <h2>La Dolce Vita Trattoria</h2>
+            <h3>{tipo}</h3>
+            <h2>{titulo}</h2>
         </div>
     </Hero>
     

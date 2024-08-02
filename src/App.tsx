@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 
 import { GlobalStyle } from "./styles"
 import Home from "./pages/Home"
-import About from "./pages/About"
+import About from "./pages/Restaurante"
 
 
 const routes = createBrowserRouter([
@@ -11,7 +11,7 @@ const routes = createBrowserRouter([
     element: <Home />
   },
   {
-    path: '/about',
+    path: '/restaurante/:id',
     element: <About />
   }
 ])

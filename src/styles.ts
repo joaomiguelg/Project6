@@ -10,7 +10,6 @@ export const GlobalStyle = createGlobalStyle`
 
     font-family: Roboto, sans-serif;
 
-
 }
 
 
@@ -21,13 +20,20 @@ export const Container = styled.main`
 max-width: 1024px;
 width: 100%;
 
+margin: 10vh auto;
 
-margin: 80px auto;
+display: flex;
+justify-content: center;
 
-display: flex; 
-flex-wrap: wrap;
+ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-column-gap: 54px;
+    grid-row-gap: 54px;
 
-gap: 80px;
+    padding-inline-start: 0px;
+    
+}
 
 
 `

@@ -13,6 +13,12 @@ border: 2px solid #B2000E;
 display: flex;
 flex-direction: column;
 justify-content: space-around;
+
+font-size: 14px;
+
+img {
+    height: 167px;
+}
 `
 
 export const Button = styled.button`
@@ -21,5 +27,6 @@ width: 100%;
 height: 24px;
 background-color: #B2000E;
 color: white;
+
 
 `

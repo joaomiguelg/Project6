@@ -7,38 +7,68 @@ import {
   TitleContainer,
 } from "./styles";
 
-
-
-import restaurantImg from "../../assets/images/28895a55942ffb290182da4c32ba645d.png";
 import starIcon from "../../assets/images/starIcon.png";
+import { Restaurante } from "../../pages/Home";
+import { useEffect, useState } from "react";
 
-const Restaurant = () => (
-  <CardRestaurant>
-    <ImgContainer>
-      <img src={restaurantImg} alt="" />
-      <div className="spans">
-        <span>Destaque da Semana</span>
-        <span>Japonesa</span>
-      </div>
-    </ImgContainer>
-    <GeneralContainer>
-      <TitleContainer>
-        <h3>Hioki Sushi</h3>
-        <div>
-          <a href="">
-            <span>4.9</span>
-            <img src={starIcon} alt="Icone de Estrela" />
-          </a>
+
+
+type Props = {
+  capa: string;
+  tipo: string;
+  titulo: string;
+  avaliacao: string;
+  descricao: string;
+  destacado: boolean;
+};
+
+const Restaurant = ({
+  capa,
+  tipo,
+  titulo,
+  avaliacao,
+  descricao,
+  destacado,
+}: Props) => {
+  const [restaurant, setRestaurant] = useState<Restaurante>();
+
+
+  useEffect(() => {
+    fetch("https://fake-api-tau.vercel.app/api/efood/restaurantes")
+      .then((res) => res.json())
+      .then((res) => setRestaurant(res));
+  }, []);
+
+  if (!restaurant) {
+    return <h3>Carregando...</h3>;
+  }
+
+  return (
+    <CardRestaurant>
+      <ImgContainer>
+        <img src={capa} alt="Foto restaurante" />
+        <div className="spans">
+          {destacado && <span>Destaque da Semana</span>}
+          <span>{tipo}</span>
         </div>
-      </TitleContainer>
-      <DescribeContainer>
-        <p>
-        A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!
-        </p>
-        <Button to={'/about'}>Saiba Mais</Button>
-      </DescribeContainer>
-    </GeneralContainer>
-  </CardRestaurant>
-);
+      </ImgContainer>
+      <GeneralContainer>
+        <TitleContainer>
+          <h3>{titulo}</h3>
+          <div>
+            <a href="">
+              <span>{avaliacao}</span>
+              <img src={starIcon} alt="Icone de Estrela" />
+            </a>
+          </div>
+        </TitleContainer>
+        <DescribeContainer>
+          <p>{descricao}</p>
+          <Button to={`/restaurante/${restaurant.id}`}>Saiba Mais</Button>
+        </DescribeContainer>
+      </GeneralContainer>
+    </CardRestaurant>
+  );
+};
 
 export default Restaurant;

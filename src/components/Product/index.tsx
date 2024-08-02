@@ -1,17 +1,25 @@
-import { Button, StyledProduct } from "./styles"
-import productImg from '../../assets/images/image 3.png'
+import { Button, StyledProduct } from "./styles";
 
-const Product = () => (
+type Props = {
+  foto: string
+  nome: string
+  descricao: string
+}
+
+const Product = ({foto, nome, descricao}: Props) => {
+    
+  return (
     <>
-    <StyledProduct>
-        <img src={productImg} alt="Imagem do Produto" />
-        <h4>Pizza Marguerita</h4>
+      <StyledProduct>
+        <img src={foto} alt="Imagem do Produto" />
+        <h4>{nome}</h4>
         <p>
-        A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!
+          {descricao}
         </p>
         <Button>Adicionar ao Carrinho</Button>
-    </StyledProduct>
+      </StyledProduct>
     </>
-)
+  );
+};
 
-export default Product
+export default Product;
