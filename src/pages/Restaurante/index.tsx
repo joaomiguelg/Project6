@@ -8,8 +8,6 @@ import { Restaurante } from "../Home";
 import { useEffect, useState } from "react";
 import Product from "../../components/Product";
 
-
-
 const About = () => {
   const { id } = useParams();
 
@@ -25,17 +23,27 @@ const About = () => {
     return <h3> Carregando ...</h3>;
   }
 
-  console.log(restaurant.cardapio)
-
   return (
     <>
       <HeaderAbout />
-      <RestaurantHero capa={restaurant.capa} tipo={restaurant.tipo} titulo={restaurant.titulo} />
+      <RestaurantHero
+        capa={restaurant.capa}
+        tipo={restaurant.tipo}
+        titulo={restaurant.titulo}
+      />
       <Modal />
       <AboutContainer>
-        {restaurant.cardapio.map((item, id) => <ul>
-          <li key={id}><Product foto={item.foto} nome={item.nome} descricao={item.descricao} /></li>
-        </ul>)}
+        <ul>
+          {restaurant.cardapio.map((item) => (
+            <li key={item.id}>
+              <Product
+                foto={item.foto}
+                nome={item.nome}
+                descricao={item.descricao}
+              />
+            </li>
+          ))}
+        </ul>
       </AboutContainer>
       <Footer />
     </>

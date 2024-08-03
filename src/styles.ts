@@ -41,12 +41,13 @@ export const AboutContainer = styled.main`
 
 max-width: 1024px;
 width: 100%;
-height: 75vh;
+height: 100vh;
 
 margin: 80px auto;
 
 display: grid;
 grid-template-columns: 33% 33% 33%;
+gap: 16px;
 
 
 

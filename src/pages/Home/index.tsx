@@ -30,6 +30,8 @@ export type Restaurante = {
 const Home = () => {
   const [estabelecimento, setEstabelecimento] = useState<Restaurante[]>([]);
 
+  
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
@@ -49,7 +51,7 @@ const Home = () => {
         <ul>
           {estabelecimento.map((rest) => (
             <li key={rest.id}>
-              <Restaurant destacado={rest.destacado}capa={rest.capa} tipo={rest.tipo} titulo={rest.titulo} avaliacao={rest.avaliacao} descricao={rest.descricao} />
+              <Restaurant id={rest.id} destacado={rest.destacado}capa={rest.capa} tipo={rest.tipo} titulo={rest.titulo} avaliacao={rest.avaliacao} descricao={rest.descricao} />
             </li>
           ))}
         </ul>
@@ -58,5 +60,6 @@ const Home = () => {
     </>
   );
 };
+
 
 export default Home;

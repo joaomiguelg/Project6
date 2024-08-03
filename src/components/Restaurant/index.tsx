@@ -8,8 +8,8 @@ import {
 } from "./styles";
 
 import starIcon from "../../assets/images/starIcon.png";
-import { Restaurante } from "../../pages/Home";
 import { useEffect, useState } from "react";
+import { Restaurante } from "../../pages/Home";
 
 
 
@@ -20,6 +20,7 @@ type Props = {
   avaliacao: string;
   descricao: string;
   destacado: boolean;
+  id: number;
 };
 
 const Restaurant = ({
@@ -29,19 +30,25 @@ const Restaurant = ({
   avaliacao,
   descricao,
   destacado,
-}: Props) => {
-  const [restaurant, setRestaurant] = useState<Restaurante>();
+  id
 
+  
+}: Props) => {
+
+  const [ restaurant, setRestaurant] = useState<Restaurante>()
 
   useEffect(() => {
-    fetch("https://fake-api-tau.vercel.app/api/efood/restaurantes")
+    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
       .then((res) => res.json())
-      .then((res) => setRestaurant(res));
-  }, []);
-
-  if (!restaurant) {
-    return <h3>Carregando...</h3>;
+      .then((res) => setRestaurant(res[1]))
+  }, [])
+  
+  if(!restaurant) {
+    return <h3>Carregando...</h3>
   }
+
+  console.log(restaurant)
+
 
   return (
     <CardRestaurant>
@@ -64,7 +71,7 @@ const Restaurant = ({
         </TitleContainer>
         <DescribeContainer>
           <p>{descricao}</p>
-          <Button to={`/restaurante/${restaurant.id}`}>Saiba Mais</Button>
+          <Button type='link' to={`/restaurante/${id}`}>Saiba Mais</Button>
         </DescribeContainer>
       </GeneralContainer>
     </CardRestaurant>
@@ -72,3 +79,5 @@ const Restaurant = ({
 };
 
 export default Restaurant;
+
+
