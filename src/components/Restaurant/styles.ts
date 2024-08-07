@@ -5,7 +5,6 @@ export const CardRestaurant = styled.div`
 
 width: 472px;
 
-border-radius: 16px;
 
 box-shadow: 6px 6px 13px 1px rgba(0,0,0,0.68);
 -webkit-box-shadow: 6px 6px 13px 1px rgba(0,0,0,0.68);
@@ -19,9 +18,6 @@ export const ImgContainer = styled.div`
 width: 100%;
 height: 217px;
 overflow: hidden;
-
-border-top-right-radius: 16px;
-border-top-left-radius: 16px;
 
 position: relative;
 
@@ -39,7 +35,8 @@ position: relative;
 
         font-size: 12px;
         color: white;
-        background-color: #B2000E;
+        background-color: #E66767
+;
         padding: 6px;
 
         border-radius: 8px;
@@ -87,11 +84,13 @@ a {
     align-items: center;
     gap: 8px;
 
-    color: #B2000E;
+    color: #E66767
+;
 }
 
 h3 {
-    color: #B2000E;
+    color: #E66767
+;
 }
 
 `
@@ -112,11 +111,11 @@ button {
     font-weight: bold;
 
     color: white;
-    background-color: #B2000E;
+    background-color: #E66767
+;
     border: none;
     cursor: pointer;
 
-    border-radius: 8px;
 
 }
 
@@ -125,8 +124,8 @@ button {
 export const Button = styled(Link)`
 
 text-decoration: none;
-background-color: #B2000E;
-border-radius:8px;
+background-color: #E66767
+;
 color: white;
 
 display: flex;

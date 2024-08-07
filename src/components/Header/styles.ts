@@ -1,15 +1,15 @@
 import styled from "styled-components";
+import background from '../../assets/images/Vector.png'
 
 export const HeaderBar = styled.header`
 
-background-color: #B2000E;
+background-image: url(${background}) ;
 width: 100%;
-height: 182px;
-
 display: flex;
 align-items: center;
 justify-content: center;
 
+height: 384px;
 
 `
 
@@ -17,18 +17,16 @@ export const Titles = styled.div`
 
 display: flex;
 flex-direction: column;
-align-items: center;
-gap: 32px;
-color: white;
+align-items: center; 
+color: #E66767;
+gap: 64px;
 
-h1 {
-    font-family: "Playwrite BE VLG", cursive;
-    font-size: 40px;
-}
 
 h2 {
     font-family: "Roboto", sans-serif;
-    font-weight: 200;
+    font-weight: bold;
+    text-align: center;
+    font-size: 36px;
 }
 
 `

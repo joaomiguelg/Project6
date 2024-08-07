@@ -10,10 +10,15 @@ export const GlobalStyle = createGlobalStyle`
 
     font-family: Roboto, sans-serif;
 
-}
 
+;
+
+}
+ 
 
 `;
+
+
 
 export const Container = styled.main`
   max-width: 1024px;

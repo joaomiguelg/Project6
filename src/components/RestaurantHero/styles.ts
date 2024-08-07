@@ -12,6 +12,10 @@ position: relative;
 -moz-box-shadow: inset 0px 0px 162px 97px rgba(0,0,0,0.58);
 box-shadow: inset 0px 0px 162px 97px rgba(0,0,0,0.58);
 
+display: flex;
+align-items: center;
+justify-content: center;
+
 
 
 
@@ -27,14 +31,16 @@ img {
 
 .heroText {
 
-position: absolute;
-top: 32px;
-left: 12vw;
+
 color: white;
+
+max-width: 1024px;
+width: 80%;
 
 display: flex;
 flex-direction: column;
 gap: 160px;
+
 
 h3 {
     font-weight: lighter;

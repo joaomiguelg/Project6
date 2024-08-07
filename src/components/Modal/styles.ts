@@ -3,12 +3,14 @@ import styled from "styled-components";
 
 export const StyledModal = styled.div`
 
-span {
+button {
     position: absolute;
     top: 4px;
     right: 8px;
-
+    background-color: #E66767;
     color: white;
+    font-size: 16px;
+    cursor: pointer;
     
 }
 
@@ -21,14 +23,12 @@ width: 80%;
 height: 344px;
 padding: 16px;
 
-background-color: #B2000E;
+background-color: #E66767;
 
 display: flex;
 flex-direction: row;
 align-items: center;
 gap: 16px;
-
-display: none;
 
 div {
     display: flex;

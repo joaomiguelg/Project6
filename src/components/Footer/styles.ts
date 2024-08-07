@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
 
-background-color: #B2000E;
+background-color: #FFEBD9;
 
 width: 100vw;
 height: 298px;
 
 margin-top: 15vh;
 
-color: white;
+color: #E66767;
 
 display: flex;
 flex-direction: column;

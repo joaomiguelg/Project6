@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import Restaurant from "../../components/Restaurant";
 import { Container } from "../../styles";
 
-export interface cardapioIten  {
+export interface CardapioIten  {
 
   foto: string,
   preco: string,
@@ -23,7 +23,7 @@ export type Restaurante = {
   avaliacao: string;
   descricao: string;
   capa: string
-  cardapio: cardapioIten[]
+  cardapio: CardapioIten[]
 
 };
 
