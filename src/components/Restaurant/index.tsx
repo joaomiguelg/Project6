@@ -47,7 +47,7 @@ const Restaurant = ({
     return <h3>Carregando...</h3>
   }
 
-  console.log(restaurant)
+ 
 
 
   return (

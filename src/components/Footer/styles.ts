@@ -4,9 +4,8 @@ export const StyledFooter = styled.footer`
 
 background-color: #FFEBD9;
 
-width: 100vw;
 height: 298px;
-
+width: 100%;
 margin-top: 15vh;
 
 color: #E66767;

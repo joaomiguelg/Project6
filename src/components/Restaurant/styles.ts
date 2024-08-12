@@ -4,11 +4,9 @@ import { Link } from "react-router-dom";
 export const CardRestaurant = styled.div`
 
 width: 472px;
-
-
-box-shadow: 6px 6px 13px 1px rgba(0,0,0,0.68);
--webkit-box-shadow: 6px 6px 13px 1px rgba(0,0,0,0.68);
--moz-box-shadow: 6px 6px 13px 1px rgba(0,0,0,0.68);
+height: 398px;
+border: 1px solid #E66767;
+color: #E66767
 
 
 `
@@ -35,11 +33,8 @@ position: relative;
 
         font-size: 12px;
         color: white;
-        background-color: #E66767
-;
+        background-color: #E66767;
         padding: 6px;
-
-        border-radius: 8px;
 
 
     }
@@ -79,7 +74,7 @@ align-items: center;
 
 a {
     text-decoration: none;
-
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -102,6 +97,9 @@ flex-direction: column;
 gap: 16px;
 
 max-height: 100%;
+
+font-size: 14px;
+
 
 button {
 

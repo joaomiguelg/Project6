@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledModal = styled.div`
 
-button {
+.closeButton {
     position: absolute;
     top: 4px;
     right: 8px;
@@ -14,6 +13,11 @@ button {
     
 }
 
+h2 {
+
+    font-size: 18px;
+}
+
 position: fixed;
 top: 50%;
 left: 50%;
@@ -22,6 +26,9 @@ max-width: 1024px;
 width: 80%;
 height: 344px;
 padding: 16px;
+
+font-size: 14px;
+font-weight: lighter;
 
 background-color: #E66767;
 
@@ -39,9 +46,6 @@ div {
 
     
 
-    p {
-    
-    }
 }
 
 img {
@@ -50,10 +54,11 @@ img {
 }
 `
 
-export const Button = styled(Link)`
+export const Button = styled.button`
 
 width: 218px;
 height: 24px;
+
 
 display: flex;
 justify-content: center;
@@ -65,5 +70,9 @@ background-color: white;
 color: #B2000E;
 
 text-decoration: none;
+background: #FFEBD9;
+
+
+cursor: pointer;
 
 `

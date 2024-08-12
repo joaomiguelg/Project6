@@ -6,22 +6,23 @@ type Props = {
   descricao: string,
   porcao: string,
   preco: string,
-  onClose: () => void
+  onClose: () => void,
+  addCart: () => void
 
 };
 
-const Modal = ({ foto, nome, descricao, porcao, preco, onClose}: Props) => {
+const Modal = ({ foto, nome, descricao, porcao, preco, onClose, addCart}: Props) => {
   
 
   return (
     <StyledModal>
-      <button onClick={onClose}>x</button>
+      <button onClick={onClose} className="closeButton">x</button>
       <img src={foto} alt="" />
       <div>
         <h2>{nome}</h2>
         <p>{descricao}</p>
         <p>{porcao}</p>
-        <Button to={""}>Adicionar ao carrinho - {preco}</Button>
+        <Button onClick={addCart} >Adicionar ao carrinho - {preco}</Button>
       </div>
     </StyledModal>
   );

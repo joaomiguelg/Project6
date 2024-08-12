@@ -7,14 +7,19 @@ import { AboutContainer } from "../../styles";
 import { CardapioIten, Restaurante } from "../Home";
 import { useEffect, useState } from "react";
 import Product from "../../components/Product";
+import Cart from "../../components/Cart";
+import { useGetCardapioItensQuery } from "../../services/api";
 
 const About = () => {
   const { id } = useParams();
 
-  const [restaurant, setRestaurant] = useState<Restaurante>();
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [selectedProduct, setSelectedProduct] = useState<CardapioIten | null>(null);
   
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [selectedProduct, setSelectedProduct] = useState<CardapioIten | null>(
+    null
+  );
+
+  const { data: restaurant} = useGetCardapioItensQuery(id)
 
   const handleClick = (product: CardapioIten) => {
     setSelectedProduct(product);
@@ -26,11 +31,7 @@ const About = () => {
     setSelectedProduct(null);
   };
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setRestaurant(res));
-  }, [id]);
+  
 
   if (!restaurant) {
     return <h3> Carregando ...</h3>;
@@ -46,7 +47,7 @@ const About = () => {
       />
       <AboutContainer>
         <ul>
-          {restaurant.cardapio.map((item) => (
+          {restaurant.cardapio.map((item: CardapioIten) => (
             <li key={item.id}>
               <Product
                 foto={item.foto}
@@ -65,6 +66,7 @@ const About = () => {
             porcao={selectedProduct.porcao}
             preco={selectedProduct.preco}
             onClose={handleCloseModal}
+            addCart={() => handleClick(selectedProduct)}
           />
         )}
       </AboutContainer>

@@ -7,7 +7,7 @@ const StyledHeaderAbout = styled.header`
 background-image: url(${background}) ;
 color: #E66767;
 
-width: 100vw;
+width: 100%;
 height: 186px;
 
 display: flex;

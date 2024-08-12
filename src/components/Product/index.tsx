@@ -9,6 +9,13 @@ type Props = {
 }
 
 const Product = ({foto, nome, descricao, onProductClick}: Props) => {
+
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 95) {
+      return descricao.slice(0, 200) + '...'
+    }
+    return descricao
+  }
     
   return (
     <>
@@ -16,7 +23,7 @@ const Product = ({foto, nome, descricao, onProductClick}: Props) => {
         <img src={foto} alt="Imagem do Produto" />
         <h4>{nome}</h4>
         <p>
-          {descricao}
+          {getDescricao(descricao)}
         </p>
         <Button onClick={onProductClick} >Adicionar ao Carrinho</Button>
       </StyledProduct>
