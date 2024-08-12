@@ -28,7 +28,6 @@ height: 344px;
 padding: 16px;
 
 font-size: 14px;
-font-weight: lighter;
 
 background-color: #E66767;
 

@@ -16,7 +16,7 @@ flex-direction: column;
 gap: 8px;
 
 p {
-    font-weight: lighter;
+    
     font-size: 14px;
 }
 
