@@ -4,8 +4,8 @@ import HeaderAbout from "../../components/HeaderAbout";
 import Modal from "../../components/Modal";
 import RestaurantHero from "../../components/RestaurantHero";
 import { AboutContainer } from "../../styles";
-import { CardapioIten, Restaurante } from "../Home";
-import { useEffect, useState } from "react";
+import { CardapioIten} from "../Home";
+import {  useState } from "react";
 import Product from "../../components/Product";
 import Cart from "../../components/Cart";
 import { useGetCardapioItensQuery } from "../../services/api";
@@ -39,6 +39,7 @@ const About = () => {
 
   return (
     <>
+      <Cart />
       <HeaderAbout />
       <RestaurantHero
         capa={restaurant.capa}

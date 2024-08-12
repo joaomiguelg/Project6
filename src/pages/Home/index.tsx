@@ -30,7 +30,7 @@ export type Restaurante = {
 
 const Home = () => {
 
-  const { data, isLoading } = useGetRestaurantQuery()
+  const { data } = useGetRestaurantQuery()
   
   if(!data) {
     return <h3>Carregando...</h3>
