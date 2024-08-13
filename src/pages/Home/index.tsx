@@ -8,7 +8,7 @@ import { useGetRestaurantQuery } from '../../services/api'
 export interface CardapioIten  {
 
   foto: string,
-  preco: string,
+  preco: number,
   id: number,
   nome: string,
   descricao: string

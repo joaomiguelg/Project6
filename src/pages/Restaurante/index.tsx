@@ -7,7 +7,6 @@ import { AboutContainer } from "../../styles";
 import { CardapioIten} from "../Home";
 import {  useState } from "react";
 import Product from "../../components/Product";
-import Cart from "../../components/Cart";
 import { useGetCardapioItensQuery } from "../../services/api";
 
 const About = () => {
@@ -39,7 +38,6 @@ const About = () => {
 
   return (
     <>
-      <Cart />
       <HeaderAbout />
       <RestaurantHero
         capa={restaurant.capa}
@@ -51,23 +49,14 @@ const About = () => {
           {restaurant.cardapio.map((item: CardapioIten) => (
             <li key={item.id}>
               <Product
-                foto={item.foto}
-                nome={item.nome}
-                descricao={item.descricao}
-                onProductClick={() => handleClick(item)}
-              />
+                onProductClick={() => handleClick(item)} iten={item}              />
             </li>
           ))}
         </ul>
         {showModal && selectedProduct && (
           <Modal
-            foto={selectedProduct.foto}
-            nome={selectedProduct.nome}
-            descricao={selectedProduct.descricao}
-            porcao={selectedProduct.porcao}
-            preco={selectedProduct.preco}
-            onClose={handleCloseModal}
-            addCart={() => handleClick(selectedProduct)}
+            iten={selectedProduct}
+            onClose={handleCloseModal} 
           />
         )}
       </AboutContainer>

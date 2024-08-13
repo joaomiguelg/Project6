@@ -1,17 +1,30 @@
 import trashIcon from '../../assets/images/lixeira-de-reciclagem 1.png'
-import imgProduct from '../../assets/images/28895a55942ffb290182da4c32ba645d.png'
 import { StyledCartItem } from './styles'
+import { CardapioIten } from '../../pages/Home'
+import { remove } from '../../store/reducers/cart'
+import { useDispatch } from 'react-redux'
 
+type Props = {
+    itens: CardapioIten
+}
 
-const CartIten = () => {
+const CartIten = ({itens}: Props) => {
+
+    const dispatch = useDispatch()
+
+    const removeItem = () => {
+        dispatch(remove(itens.id))
+    }
+    
+
     return (
         <StyledCartItem>
-            <img src={imgProduct} alt="" />
+            <img src={itens.foto} alt="" />
             <div>
-                <h4>{}</h4>
-                <p>{}</p>
+                <h4>{itens.nome}</h4>
+                <p>{`R$${itens.preco}0`}</p>
             </div>
-            <span>
+            <span onClick={() => removeItem()}>
                 <img src={trashIcon} alt="" />
             </span>
         </StyledCartItem>

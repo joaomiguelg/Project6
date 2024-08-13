@@ -1,14 +1,15 @@
 
+import { useDispatch } from "react-redux";
 import { Button, StyledProduct } from "./styles";
+import { add, open } from "../../store/reducers/cart";
+import { CardapioIten } from "../../pages/Home";
 
 type Props = {
-  foto: string
-  nome: string
-  descricao: string
+  iten: CardapioIten
   onProductClick: () => void
 }
 
-const Product = ({foto, nome, descricao, onProductClick}: Props) => {
+const Product = ({iten, onProductClick}: Props) => {
 
   const getDescricao = (descricao: string) => {
     if (descricao.length > 95) {
@@ -16,16 +17,22 @@ const Product = ({foto, nome, descricao, onProductClick}: Props) => {
     }
     return descricao
   }
+
+  const dispatch = useDispatch()
+  const addToCart = () => {
+    dispatch(add(iten))
+    dispatch(open())
+  }
     
   return (
     <>
-      <StyledProduct >
-        <img src={foto} alt="Imagem do Produto" />
-        <h4>{nome}</h4>
+      <StyledProduct onClick={onProductClick} >
+        <img src={iten.foto} alt="Imagem do Produto" />
+        <h4>{iten.nome}</h4>
         <p>
-          {getDescricao(descricao)}
+          {getDescricao(iten.descricao)}
         </p>
-        <Button onClick={onProductClick} >Adicionar ao Carrinho</Button>
+        <Button onClick={addToCart}  >Adicionar ao Carrinho</Button>
       </StyledProduct>
     </>
   );

@@ -1,30 +1,42 @@
-import { Button, StyledModal } from "./styles";
+import { useDispatch } from "react-redux";
+import { CardapioIten } from "../../pages/Home";
+import { Button,  Overlay, StyledModal } from "./styles";
+import { add, open } from '../../store/reducers/cart'
+
 
 type Props = {
-  foto: string,
-  nome: string,
-  descricao: string,
-  porcao: string,
-  preco: string,
-  onClose: () => void,
-  addCart: () => void
-
+  iten: CardapioIten
+  onClose: () => void;
 };
 
-const Modal = ({ foto, nome, descricao, porcao, preco, onClose, addCart}: Props) => {
-  
+const Modal = ({
+  iten,
+  onClose,
+}: Props) => {
 
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add(iten))
+    dispatch(open())
+  }
+ 
   return (
-    <StyledModal>
-      <button onClick={onClose} className="closeButton">x</button>
-      <img src={foto} alt="" />
-      <div>
-        <h2>{nome}</h2>
-        <p>{descricao}</p>
-        <p>{porcao}</p>
-        <Button onClick={addCart} >Adicionar ao carrinho - {preco}</Button>
-      </div>
-    </StyledModal>
+    <>
+      <Overlay />
+      <StyledModal>
+        <button onClick={onClose} className="closeButton">
+          x
+        </button>
+        <img src={iten.foto} alt="" />
+        <div>
+          <h2>{iten.nome}</h2>
+          <p>{iten.descricao}</p>
+          <p>Serve: {iten.porcao}</p>
+          <Button onClick={addToCart}  >Adicionar ao carrinho - {`R$${iten.preco}0`}</Button>
+        </div>
+      </StyledModal>
+    </>
   );
 };
 

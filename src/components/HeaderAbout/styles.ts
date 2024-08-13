@@ -2,7 +2,7 @@ import styled from "styled-components";
 import background from '../../assets/images/Vector.png'
 
 
-const StyledHeaderAbout = styled.header`
+export const StyledHeaderAbout = styled.header`
 
 background-image: url(${background}) ;
 color: #E66767;
@@ -30,6 +30,8 @@ flex-direction: row;
 align-items: center;
 justify-content: space-between;
 
-`
+a {
+    cursor: pointer;
+}
 
-export default StyledHeaderAbout
+`

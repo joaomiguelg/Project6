@@ -14,7 +14,7 @@ color: #FFEBD9;
 display: flex;
 flex-direction: column;
 gap: 8px;
-
+cursor: pointer;
 p {
     
     font-size: 14px;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCartItem = styled.div`
+export const StyledCartItem = styled.li`
 
 width: 344px;
 height: 100px;

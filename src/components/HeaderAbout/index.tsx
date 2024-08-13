@@ -1,20 +1,32 @@
-import logo from '../../assets/images/logo.png'
-import StyledHeaderAbout, { HeaderContainer } from './styles'
+import { useDispatch, useSelector } from "react-redux";
+import logo from "../../assets/images/logo.png";
+import { open } from '../../store/reducers/cart'
+import { HeaderContainer, StyledHeaderAbout } from "./styles";
+import { RootReducer } from "../../store";
+import { Link } from "react-router-dom";
 
-const HeaderAbout = () => (
+const HeaderAbout = () => {
 
+    const dispatch = useDispatch()
+    const {items}= useSelector((state: RootReducer) => state.cart)
+
+    const openCart = () => {
+        dispatch(open())
+    }
+
+  return (
     <StyledHeaderAbout>
-        <HeaderContainer>
-        <h4>
-            Restaurantes
-        </h4>
+      <HeaderContainer>
+        <h4>Restaurantes</h4>
+        <Link to={"/"}>
         <img src={logo} alt="logo efood" />
-        <p>0 produto no carrinho</p>
-        </HeaderContainer>
-        
+        </Link>
+        <a onClick={openCart}>
+        {items.length} - produto(s) no carrinho
+        </a>
+      </HeaderContainer>
     </StyledHeaderAbout>
+  );
+};
 
-
-)
-
-export default HeaderAbout
+export default HeaderAbout;

@@ -1,6 +1,31 @@
 import styled from "styled-components";
 
-export const CartContainer = styled.aside`
+export const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.7;
+`
+
+export const CartContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: flex-end;
+  z-index: 1;
+
+  &.is-open {
+    display: flex;
+  }
+`
+
+export const StyledCart = styled.aside`
 
 background-color: #E66767;
 width: 360px;
@@ -66,7 +91,8 @@ button {
     width: 100%;
     background: #FFEBD9;
     color: #E66767;
-
+    height: 24px;
+    font-weight: 700;
 }
 
 
