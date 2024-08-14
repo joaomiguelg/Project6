@@ -34,8 +34,8 @@ img {
 
 color: white;
 
-max-width: 1024px;
-width: 80%;
+max-width: 950px;
+width: 100%;
 
 display: flex;
 flex-direction: column;

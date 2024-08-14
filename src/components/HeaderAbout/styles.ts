@@ -22,8 +22,8 @@ img {
 
 export const HeaderContainer = styled.div`
 
-max-width: 1024px;
-width: 80%;
+max-width: 950px;
+width: 100%;
 
 display: flex;
 flex-direction: row;
