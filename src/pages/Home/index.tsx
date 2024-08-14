@@ -4,7 +4,6 @@ import Restaurant from "../../components/Restaurant";
 import { Container } from "../../styles";
 
 import { useGetRestaurantQuery } from '../../services/api'
-import Confirm from "../../components/Confirm";
  
 export interface CardapioIten  {
 
