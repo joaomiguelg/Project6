@@ -1,11 +1,27 @@
-import { Overlay, ShippingContainer, StyledShipping } from "../Shipping/styles";
-import { Message } from "./styles";
+import { useDispatch, useSelector } from "react-redux";
+import { ConfirmContainer, Message, StyledConfirm } from "./styles";
+import { close } from '../../store/reducers/cart'
+import { close as closeConfirm } from '../../store/reducers/confirm'
+import { RootReducer } from "../../store";
+import { clear } from "../../store/reducers/cart";
+
+
 
 const Confirm = () => {
+
+    const { isOpen } = useSelector((state: RootReducer) => state.confirm);
+
+    const dispatch = useDispatch();
+
+  const closeCart = () => {
+    dispatch(close());
+    dispatch(closeConfirm())
+    dispatch(clear())
+  };
+
   return (
-    <ShippingContainer>
-      <Overlay />
-      <StyledShipping>
+    <ConfirmContainer className={isOpen ? "is-open" : ""}> 
+      <StyledConfirm>
         <Message>
           <h3>Pedido realizado - ORDER_ID</h3>
           <p>
@@ -24,10 +40,10 @@ const Confirm = () => {
           <p>
           Esperamos que desfrute de uma deliciosa e agradável experiência gastronômica. Bom apetite!
           </p>
-          <button>Concluir</button>
+          <button onClick={closeCart}>Concluir</button>
         </Message>
-      </StyledShipping>
-    </ShippingContainer>
+      </StyledConfirm>
+    </ConfirmContainer>
   );
 };
 

@@ -4,7 +4,14 @@ import CartIten from "../CartIten";
 import { CartContainer, Overlay, StyledCart } from "./styles";
 import { close } from "../../store/reducers/cart";
 
-const Cart = () => {
+type Props = {
+
+  openShipping(): void
+  
+
+}
+
+const Cart = ({openShipping}: Props) => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
 
   const dispatch = useDispatch();
@@ -26,6 +33,8 @@ const Cart = () => {
     }).format(preco)
   }
 
+
+
   return (
     <CartContainer className={isOpen ? "is-open" : ""}>
       <Overlay onClick={closeCart} />
@@ -40,7 +49,7 @@ const Cart = () => {
             <p>Valor Total:</p>
             <span>{formataPreco(getTotalPrice())}</span>
           </div>
-          <button>Continuar com a Entrega</button>
+          <button onClick={() => { openShipping(); }  }>Continuar com a Entrega</button>
         </div>
       </StyledCart>
     </CartContainer>
