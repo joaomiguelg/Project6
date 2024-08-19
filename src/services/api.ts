@@ -2,8 +2,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Restaurante } from "../pages/Home";
 import { CheckoutData} from "../store/reducers/types";
 
-type PurchaseResponse = {
-  orderId: string;
+export type PurchaseResponse = {
+    
+        orderId: string;
+    
+  
 };
 
 

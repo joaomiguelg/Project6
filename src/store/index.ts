@@ -2,6 +2,7 @@ import {configureStore} from '@reduxjs/toolkit'
 import deliveryReducer from './reducers/delivery'
 import paymentReducer from './reducers/payment'
 import confirmReducer from './reducers/confirm'
+import orderIdReducer from './reducers/orderId'
 
 import api from '../services/api'
 
@@ -13,7 +14,8 @@ export const store = configureStore({
         [api.reducerPath]: api.reducer,
         delivery: deliveryReducer,
         payment: paymentReducer,
-        confirm: confirmReducer
+        confirm: confirmReducer,
+        orderId: orderIdReducer
 
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware)

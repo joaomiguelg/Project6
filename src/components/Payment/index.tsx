@@ -7,10 +7,12 @@ import { PaymentType } from "../../store/reducers/types";
 import { RootReducer } from "../../store";
 import { clearDeliveryValues } from "../../store/reducers/delivery";
 import { open } from '../../store/reducers/confirm'
+import { setOrderId } from "../../store/reducers/orderId";
+
 
 type Props = {
   backToEnd(): void;
-  closePayment(): void;
+
 };
 
 const initialValues: PaymentType = {
@@ -25,7 +27,7 @@ const initialValues: PaymentType = {
   },
 };
 
-const Payment = ({ backToEnd, closePayment}: Props) => {
+const Payment = ({ backToEnd }: Props) => {
   const [purchase] = usePurchaseMutation();
 
   const deliveryData = useSelector((state: RootReducer) => state.delivery);
@@ -34,28 +36,52 @@ const Payment = ({ backToEnd, closePayment}: Props) => {
 
   const form = useFormik({
     initialValues: initialValues,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       dispatch(setPaymentData(values));
-      purchase({
-        delivery: deliveryData, // Dados de entrega
-        payment: values, // Dados de pagamento
-        products: items.map((item) => ({
-          id: item.id,
-          price: item.preco,
-        })),
-      });
-      dispatch(clearDeliveryValues());
-      dispatch(open())
-      closePayment()
+  
+      try {
+        const response = await purchase({
+          delivery: deliveryData, // Dados de entrega
+          payment: values, // Dados de pagamento
+          products: items.map((item) => ({
+            id: item.id,
+            price: item.preco,
+          })),
+        });
+  
+        if (response.data) {
+          dispatch(setOrderId(response.data.orderId));
+        }
+        dispatch(clearDeliveryValues());
+        dispatch(open());
+      } catch (error) {
+        console.error("Erro ao processar o pagamento:", error);
+       
+      }
     },
   });
+
+
+  const getTotalPrice = () => {
+    return items.reduce((ac, va) => {
+      return (ac += va.preco)
+    }, 0)
+  }
+
+  const formataPreco = (preco = 0) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(preco)
+  }
+
 
   
   return (
     <>
     <PaymentContainer>
       <StyledPayment>
-        <h3>Pagamento - Valor a pagar 100</h3>
+        <h3>Pagamento - Valor a pagar {formataPreco(getTotalPrice())} </h3>
         <form onSubmit={form.handleSubmit}>
           <label htmlFor="card.name">Nome no Cartão</label>
           <input

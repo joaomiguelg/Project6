@@ -58,8 +58,8 @@ function App() {
       <RouterProvider router={routes} />
       <Cart openShipping={() => setOpenShipping(true)} />
       {openShipping && <Shipping closeShipping={closeShipping} backToCart={backToCart} />}
-      {openPayment && <Payment backToEnd={backToEnd} closePayment={closePayment} /> }
-      <Confirm />
+      {openPayment && <Payment backToEnd={backToEnd}  /> }
+      <Confirm closePayment={closePayment}  />
     </Provider>
     
   )

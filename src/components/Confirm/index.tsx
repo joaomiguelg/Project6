@@ -1,29 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ConfirmContainer, Message, StyledConfirm } from "./styles";
-import { close } from '../../store/reducers/cart'
-import { close as closeConfirm } from '../../store/reducers/confirm'
+import { close } from "../../store/reducers/cart";
+import { close as closeConfirm } from "../../store/reducers/confirm";
 import { RootReducer } from "../../store";
 import { clear } from "../../store/reducers/cart";
 
+type Props = {
+    closePayment(): void
+}
 
-
-const Confirm = () => {
-
-    const { isOpen } = useSelector((state: RootReducer) => state.confirm);
-
-    const dispatch = useDispatch();
+const Confirm = ({closePayment}: Props) => {
+  const { isOpen } = useSelector((state: RootReducer) => state.confirm);
+    const orderId = useSelector((state: RootReducer) => state.orderId.orderId)
+  const dispatch = useDispatch();
 
   const closeCart = () => {
     dispatch(close());
-    dispatch(closeConfirm())
-    dispatch(clear())
+    dispatch(closeConfirm());
+    dispatch(clear());
+    closePayment()
   };
 
+
   return (
-    <ConfirmContainer className={isOpen ? "is-open" : ""}> 
+    <ConfirmContainer className={isOpen ? "is-open" : ""}>
       <StyledConfirm>
         <Message>
-          <h3>Pedido realizado - ORDER_ID</h3>
+          <h3>Pedido realizado - {orderId} </h3>
           <p>
             Estamos felizes em informar que seu pedido já está em processo de
             preparação e, em breve, será entregue no endereço fornecido.
@@ -38,7 +41,8 @@ const Confirm = () => {
             refeição.
           </p>
           <p>
-          Esperamos que desfrute de uma deliciosa e agradável experiência gastronômica. Bom apetite!
+            Esperamos que desfrute de uma deliciosa e agradável experiência
+            gastronômica. Bom apetite!
           </p>
           <button onClick={closeCart}>Concluir</button>
         </Message>
