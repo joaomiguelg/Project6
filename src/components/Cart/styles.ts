@@ -93,6 +93,8 @@ button {
     color: #E66767;
     height: 24px;
     font-weight: 700;
+
+    cursor: pointer;
 }
 
 

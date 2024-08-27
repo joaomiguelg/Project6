@@ -8,6 +8,7 @@ import { RootReducer } from "../../store";
 import { clearDeliveryValues } from "../../store/reducers/delivery";
 import { open } from '../../store/reducers/confirm'
 import { setOrderId } from "../../store/reducers/orderId";
+import * as Yup from "yup";
 
 
 type Props = {
@@ -36,6 +37,29 @@ const Payment = ({ backToEnd }: Props) => {
 
   const form = useFormik({
     initialValues: initialValues,
+    validationSchema: Yup.object({
+        card: Yup.object({
+          name: Yup.string()
+            .required('O nome no cartão é obrigatório'),
+          number: Yup.string()
+            .required('O número do cartão é obrigatório')
+            .matches(/^[0-9]{16}$/, 'O número do cartão deve ter 16 dígitos'),
+          code: Yup.number()
+            .required('O CVV é obrigatório')
+            .min(100, 'O CVV deve ter 3 dígitos')
+            .max(999, 'O CVV deve ter 3 dígitos'),
+          expires: Yup.object({
+            month: Yup.number()
+              .required('O mês de vencimento é obrigatório')
+              .min(1, 'Mês inválido')
+              .max(12, 'Mês inválido'),
+            year: Yup.number()
+              .required('O ano de vencimento é obrigatório')
+              .min(new Date().getFullYear(), 'Ano inválido')
+              .max(2100, 'Ano inválido'),
+          }),
+        }),
+      }),
     onSubmit: async (values) => {
       dispatch(setPaymentData(values));
   
@@ -91,6 +115,9 @@ const Payment = ({ backToEnd }: Props) => {
             onChange={form.handleChange}
             onBlur={form.handleBlur}
           />
+           {form.touched.card?.name && form.errors.card?.name ? (
+            <div className="error">{form.errors.card.name}</div>
+          ) : null}
           <div className="div1">
             <div className="div2">
               <label htmlFor="card.number">Número do Cartão</label>
@@ -101,6 +128,9 @@ const Payment = ({ backToEnd }: Props) => {
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
               />
+              {form.touched.card?.number && form.errors.card?.number ? (
+                <div className="error">{form.errors.card.number}</div>
+              ) : null}
             </div>
             <div className="div2">
               <label htmlFor="card.code">CVV</label>
@@ -111,6 +141,9 @@ const Payment = ({ backToEnd }: Props) => {
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
               />
+              {form.touched.card?.code && form.errors.card?.code ? (
+                <div className="error">{form.errors.card.code}</div>
+              ) : null}
             </div>
           </div>
           <div className="div1">
@@ -123,6 +156,9 @@ const Payment = ({ backToEnd }: Props) => {
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
               />
+              {form.touched.card?.expires?.month && form.errors.card?.expires?.month ? (
+                <div className="error">{form.errors.card.expires.month}</div>
+              ) : null}
             </div>
             <div className="div2">
               <label htmlFor="card.expires.year">Ano de Vencimento</label>
@@ -133,6 +169,9 @@ const Payment = ({ backToEnd }: Props) => {
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
               />
+              {form.touched.card?.expires?.year && form.errors.card?.expires?.year ? (
+                <div className="error">{form.errors.card.expires.year}</div>
+              ) : null}
             </div>
           </div>
           <div className="btns">

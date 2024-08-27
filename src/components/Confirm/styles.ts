@@ -49,7 +49,7 @@ button {
     width: 100%;
     margin-top: 16px;
     font-weight: 700;
-;
+    cursor: pointer;
 }
 
 `

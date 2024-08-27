@@ -82,8 +82,14 @@ form {
         height: 24px;
         color: #E66767;
         background: #FFEBD9;
-
+        cursor: pointer;
         font-weight: 700;
     }
+}
+
+.error {
+    color: black;
+    font-size: 12px;
+    
 }
 `

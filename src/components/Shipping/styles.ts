@@ -92,6 +92,13 @@ form {
         color: #E66767;
         background-color: #FFEBD9;
         font-weight: 700 ;
+        cursor: pointer;
     }
+
+.error {
+    color: black;
+    font-size: 12px;
+    
+}
 
 `
